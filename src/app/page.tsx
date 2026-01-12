@@ -58,13 +58,13 @@ export default function Home() {
             className="text-center space-y-8 max-w-3xl mx-auto"
           >
             <Badge variant="secondary" className="bg-indigo-500/10 text-indigo-400 border-indigo-500/20 px-4 py-1">
-              Production-Ready Android SDK
+              Production-Ready SDKs
             </Badge>
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent">
-              Push Notifications <br /> simplified for Android.
+              Push Notifications <br /> simplified.
             </h1>
             <p className="text-xl text-slate-400 leading-relaxed">
-              Integrate LetsNotify in less than 5 minutes. Control delivery, tracking, and segmentation with a single, production-grade SDK.
+              Integrate LetsNotify in less than 5 minutes. Control delivery, tracking, and segmentation across Android and iOS with a single dashboard.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button size="lg" className="bg-indigo-600 hover:bg-indigo-500 text-white px-8 h-14 rounded-xl text-lg font-semibold">
@@ -131,6 +131,7 @@ export default function Home() {
                 <div className="px-4 py-2 bg-slate-800/50 border-b border-slate-800 flex items-center justify-between">
                   <TabsList className="bg-transparent border-none">
                     <TabsTrigger value="kotlin" className="data-[state=active]:bg-slate-700 data-[state=active]:text-white">Kotlin</TabsTrigger>
+                    <TabsTrigger value="swift" className="data-[state=active]:bg-slate-700 data-[state=active]:text-white">Swift</TabsTrigger>
                   </TabsList>
                   <Code2 className="w-4 h-4 text-slate-500" />
                 </div>
@@ -148,6 +149,27 @@ val tags = mapOf(
     "region" to "us-east"
 )
 LetsNotify.setTags(tags)
+
+// 4. Opt-out/in
+LetsNotify.disablePush()`}</code>
+                  </pre>
+                </TabsContent>
+                <TabsContent value="swift" className="p-0 m-0">
+                  <pre className="p-6 text-sm font-mono leading-relaxed overflow-x-auto text-indigo-300">
+                    <code>{`// 1. Initialize
+LetsNotify.initialize(
+    apiKey: "ln_prod_82x1...",
+    launchOptions: launchOptions
+)
+
+// 2. Set User Context
+LetsNotify.setUserId("dev_user_99")
+
+// 3. Add Custom Segments
+LetsNotify.setTags([
+    "plan": "enterprise",
+    "region": "us-east"
+])
 
 // 4. Opt-out/in
 LetsNotify.disablePush()`}</code>

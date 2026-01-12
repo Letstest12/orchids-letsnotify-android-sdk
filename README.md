@@ -1,43 +1,67 @@
-# LetsNotify Android Push Notification SDK
+# LetsNotify Mobile Push Notification SDKs
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![Platform](https://img.shields.io/badge/platform-Android-green.svg)
-![Language](https://img.shields.io/badge/language-Kotlin-purple.svg)
+![Platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS-green.svg)
 
-A production-ready Android Push Notification SDK for the **LetsNotify** SaaS platform. This SDK enables developers to integrate advanced push notifications with minimal effort while maintaining full control over delivery, tracking, and segmentation.
+Production-ready Push Notification SDKs for the **LetsNotify** SaaS platform. Integrate advanced push notifications into your mobile apps in under 5 minutes.
 
 ## 🚀 Key Features
 
-- **Single Entry Point**: Easy-to-use API with `LetsNotify.initialize()`.
-- **Automatic FCM Management**: Handles token generation, registration, and refresh automatically.
-- **Rich Notification Support**: Custom notification engine with channel support (Android 8+).
-- **Event Tracking**: Automatic `delivered` and `opened` event tracking for campaign analytics.
-- **Dynamic Segmentation**: Support for user identification and custom tagging.
-- **Robust Networking**: Built with Retrofit and OkHttp with async, non-blocking operations.
-- **Defensive Design**: Zero-crash philosophy with silent failure handling and defensive null checks.
+- **Cross-Platform**: Parity between Android and iOS SDKs for a consistent developer experience.
+- **Single Entry Point**: Clean initialization with `initialize(apiKey: "...")`.
+- **Automatic Token Management**: Handles APNs and FCM token registration and refresh.
+- **Event Tracking**: Built-in support for `delivered`, `opened`, and `app_launch` events.
+- **User Segmentation**: Easily set user IDs and custom tags for targeted campaigns.
+- **Resilient & Safe**: Non-blocking network calls, defensive coding, and zero impact on app startup.
 
-## 📦 SDK Structure
+---
 
-```text
-com.letsnotify.android
- ├── LetsNotify.kt         # Public SDK API
- ├── config/               # SDK Configuration
- ├── firebase/             # FCM Service & Logic
- ├── notification/         # Rendering Engine
- ├── network/              # Retrofit API Client
- ├── storage/              # Local Persistence
- ├── tracking/             # Device & Event Sync
- └── utils/                # Shared Helpers
+## 🤖 Android SDK (Kotlin)
+
+The Android SDK is built with Kotlin and leverages Firebase Cloud Messaging (FCM).
+
+### Quick Start
+```kotlin
+// module-level build.gradle
+dependencies {
+    implementation project(':letsnotify-sdk')
+}
+
+// In your Application class
+LetsNotify.initialize(this, "YOUR_API_KEY")
+LetsNotify.setUserId("user_123")
 ```
 
-## 🛠 Integration
+👉 [Android SDK Documentation](letsnotify-sdk/README.md)
 
-For detailed integration steps, please refer to the [SDK Documentation](letsnotify-sdk/README.md) or visit our [Web Preview](https://localhost:3000).
+---
 
-```kotlin
-// Quick Start
-LetsNotify.initialize(context, "ln_prod_apiKey")
+## 🍎 iOS SDK (Swift)
+
+The iOS SDK is built with Swift and leverages Apple Push Notification Service (APNs) via Swift Package Manager (SPM).
+
+### Quick Start
+```swift
+// In your AppDelegate or SceneDelegate
+LetsNotify.initialize(apiKey: "YOUR_API_KEY", launchOptions: launchOptions)
 LetsNotify.setUserId("user_123")
+```
+
+### Installation
+Add the `letsnotify-ios-sdk` as a dependency in your Xcode project or `Package.swift`.
+
+👉 [iOS SDK Documentation](letsnotify-ios-sdk/README.md)
+
+---
+
+## 📦 Project Structure
+
+```text
+.
+├── letsnotify-sdk/          # Android SDK (Kotlin)
+├── letsnotify-ios-sdk/      # iOS SDK (Swift Package)
+├── src/                     # Landing Page (Next.js)
+└── ...
 ```
 
 ## 📄 License
